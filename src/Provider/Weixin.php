@@ -36,6 +36,7 @@ class Weixin extends AbstractProvider {
 
     public function userDetails($response, AccessToken $token) {
         $response = (array) $response;
+
         $user = new User;
         $uid = $this->getUserUid($token);
         $name = $response['nickname'];
