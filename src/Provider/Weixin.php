@@ -24,7 +24,7 @@ class Weixin extends AbstractProvider {
         return 'https://open.weixin.qq.com/connect/oauth2/authorize';
     }
 
-    public function getWeixinAuthorizationUrl($options = array("scope" => "snsapi_base")) {
+    public function getAuthorizationUrl($options = array("scope" => "snsapi_base")) {
         $this->state = md5(uniqid(rand(), true));
 
         $params = array(
