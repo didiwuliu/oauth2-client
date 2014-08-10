@@ -12,7 +12,7 @@ namespace League\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Token\AccessToken as AccessToken;
 
-class Weixin extends IdentityProvider {
+class Weixin extends AbstractProvider {
     public $scopes = array(
         'get_user_info',
     );
