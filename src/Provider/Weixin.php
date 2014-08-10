@@ -14,13 +14,28 @@ use League\OAuth2\Client\Token\AccessToken as AccessToken;
 
 class Weixin extends AbstractProvider {
     public $scopes = array(
-        'get_user_info',
+        'snsapi_base',
+        'snsapi_userinfo'
     );
 
     public $responseType = 'string';
 
     public function urlAuthorize() {
         return 'https://open.weixin.qq.com/connect/oauth2/authorize';
+    }
+
+    public function getAuthorizationUrl($options = array("scope" => "snsapi_base")) {
+        $this->state = md5(uniqid(rand(), true));
+
+        $params = array(
+            'appid' => $this->clientId,
+            'redirect_uri' => $this->redirectUri,
+            'state' => $this->state,
+            'scope' => isset($options['scope']) ? $options['scope'] : 'snsapi_base',
+            'response_type' => isset($options['response_type']) ? $options['response_type'] : 'code',
+        );
+
+        return $this->urlAuthorize() . '?' . $this->httpBuildQuery($params, '', '&') . "#wechat_redirect";
     }
 
     public function urlAccessToken() {
