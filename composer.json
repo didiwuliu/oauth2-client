@@ -1,5 +1,5 @@
 {
-    "name": "league/oauth2-client",
+    "name": "didiwuliu/oauth2-client",
     "description": "OAuth 2.0 Client Library",
     "license": "MIT",
     "require": {
@@ -26,6 +26,12 @@
             "name": "Alex Bilbie",
             "email": "hello@alexbilbie.com",
             "homepage": "http://www.alexbilbie.com",
+            "role": "Developer"
+        },
+        {
+            "name": "ZhangChunsheng",
+            "email": "zhangchunsheng423@gmail.com",
+            "homepage": "http://www.luomor.com",
             "role": "Developer"
         }
     ],
