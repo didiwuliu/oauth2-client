@@ -49,6 +49,10 @@ class Weixin extends AbstractProvider {
         return 'https://api.weixin.qq.com/sns/oauth2/access_token';
     }
 
+    public function urlRefreshToken() {
+        return 'https://api.weixin.qq.com/sns/oauth2/refresh_token';
+    }
+
     public function getAccessToken($grant = 'authorization_code', $params = array()) {
         if (is_string($grant)) {
             // PascalCase the grant. E.g: 'authorization_code' becomes 'AuthorizationCode'
@@ -86,9 +90,8 @@ class Weixin extends AbstractProvider {
                 case 'POST':
                     $client = $this->getHttpClient();
                     $client->setBaseUrl($this->urlAccessToken());
-                    if($requestParams['grant_type'] != "authorization_code") {
-                        echo $this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&');
-                        exit();
+                    if($requestParams['grant_type'] == "refresh_token") {
+                        $client->setBaseUrl($this->urlRefreshToken());
                     }
                     $request = $client->post(null, null, $requestParams)->send();
                     $response = $request->getBody();
