@@ -237,13 +237,12 @@ abstract class AbstractProvider implements ProviderInterface
         try {
 
             $client = $this->getHttpClient();
-            $client->setBaseUrl($url);
 
             if ($this->headers) {
                 $client->setDefaultOption('headers', $this->headers);
             }
 
-            $request = $client->get()->send();
+            $request = $client->get($url)->send();
             $response = $request->getBody();
 
         } catch (BadResponseException $e) {
