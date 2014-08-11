@@ -31,9 +31,9 @@ class Weixin extends AbstractProvider {
         $params = array(
             'appid' => $this->clientId,
             'redirect_uri' => $this->redirectUri,
-            'state' => $this->state,
-            'scope' => isset($options['scope']) ? $options['scope'] : 'snsapi_base',
             'response_type' => isset($options['response_type']) ? $options['response_type'] : 'code',
+            'scope' => isset($options['scope']) ? $options['scope'] : 'snsapi_base',
+            'state' => $this->state,
         );
 
         return $this->urlAuthorize() . '?' . $this->httpBuildQuery($params, '', '&') . "#wechat_redirect";
