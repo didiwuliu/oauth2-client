@@ -18,6 +18,8 @@ use League\OAuth2\Client\Exception\IDPException as IDPException;
 use League\OAuth2\Client\Grant\GrantInterface;
 
 class Weixin extends AbstractProvider {
+    public $method = 'get';
+
     public $scopes = array(
         'snsapi_base',
         'snsapi_userinfo'
@@ -69,7 +71,6 @@ class Weixin extends AbstractProvider {
         );
 
         $requestParams = $grant->prepRequestParams($defaultParams, $params);
-        print_r($requestParams);
 
         try {
             switch (strtoupper($this->method)) {
@@ -77,6 +78,10 @@ class Weixin extends AbstractProvider {
                     // @codeCoverageIgnoreStart
                     // No providers included with this library use get but 3rd parties may
                     $client = $this->getHttpClient();
+                    if($requestParams['grant_type'] != "authorization_code") {
+                        echo $this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&');
+                        exit();
+                    }
                     $client->setBaseUrl($this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&'));
                     $request = $client->send();
                     $response = $request->getBody();
