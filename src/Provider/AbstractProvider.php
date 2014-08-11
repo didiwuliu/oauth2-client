@@ -233,7 +233,7 @@ abstract class AbstractProvider implements ProviderInterface
     protected function fetchUserDetails(AccessToken $token)
     {
         $url = $this->urlUserDetails($token);
-echo $url;
+
         try {
 
             $client = $this->getHttpClient();
@@ -245,7 +245,7 @@ echo $url;
 
             $request = $client->get()->send();
             $response = $request->getBody();
-echo $response;
+
         } catch (BadResponseException $e) {
             // @codeCoverageIgnoreStart
             $raw_response = explode("\n", $e->getResponse());

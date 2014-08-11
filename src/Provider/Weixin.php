@@ -127,7 +127,7 @@ class Weixin extends AbstractProvider {
     }
 
     public function urlUserDetails(AccessToken $token) {
-        return 'https://api.weixin.qq.com/cgi-bin/user/info?' . http_build_query([
+        return 'https://api.weixin.qq.com/sns/userinfo?' . http_build_query([
             'access_token' => $token->accessToken,
             'openid' => $this->getUserUid($token),
             'lang' => 'zh_CN'
