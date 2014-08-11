@@ -65,6 +65,7 @@ class Weixin extends AbstractProvider {
             'appid'     => $this->clientId,
             'secret'     => $this->clientSecret,
             'redirect_uri'     => $this->redirectUri,
+            'grant_type'    => $grant,
         );
 
         $requestParams = $grant->prepRequestParams($defaultParams, $params);
@@ -75,6 +76,8 @@ class Weixin extends AbstractProvider {
                     // @codeCoverageIgnoreStart
                     // No providers included with this library use get but 3rd parties may
                     $client = $this->getHttpClient();
+                    echo $this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&');
+                    exit();
                     $client->setBaseUrl($this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&'));
                     $request = $client->send();
                     $response = $request->getBody();
