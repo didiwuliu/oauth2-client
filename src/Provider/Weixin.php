@@ -141,8 +141,7 @@ class Weixin extends AbstractProvider {
     }
 
     public function userUid(AccessToken $token) {
-        $token->uid = $token->openid;
-        return $token->openid;
+        return $token->uid;
     }
 
     public function userScreenName($response, AccessToken $token) {

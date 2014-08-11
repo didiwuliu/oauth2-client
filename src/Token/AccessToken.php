@@ -27,10 +27,15 @@ class AccessToken
     public $uid;
 
     /**
+     * @var string scope
+     */
+    public $scope;
+
+    /**
      * Sets the token, expiry, etc values.
      *
      * @param  array $options token options
-     * @return void
+     * @throws InvalidArgumentException
      */
     public function __construct(array $options = null)
     {
@@ -51,6 +56,11 @@ class AccessToken
 
         // Mailru uses x_mailru_vid instead of uid
         isset($options['x_mailru_vid']) and $this->uid = $options['x_mailru_vid'];
+
+        // weixin
+        isset($options['openid']) and $this->uid = $options['openid'];
+
+        isset($options['scope']) and $this->scope = $options['scope'];
 
         // We need to know when the token expires. Show preference to 
         // 'expires_in' since it is defined in RFC6749 Section 5.1.
