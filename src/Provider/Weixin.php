@@ -12,6 +12,10 @@ namespace League\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Token\AccessToken as AccessToken;
 use League\OAuth2\Client\Entity\User as User;
+use Guzzle\Service\Client as GuzzleClient;
+use Guzzle\Http\Exception\BadResponseException;
+use League\OAuth2\Client\Exception\IDPException as IDPException;
+use League\OAuth2\Client\Grant\GrantInterface;
 
 class Weixin extends AbstractProvider {
     public $scopes = array(
@@ -49,7 +53,7 @@ class Weixin extends AbstractProvider {
             $className = str_replace(' ', '', ucwords(str_replace(array('-', '_'), ' ', $grant)));
             $grant = 'League\\OAuth2\\Client\\Grant\\' . $className;
             if (! class_exists($grant)) {
-                throw new \InvalidArgumentException('Unknown grant "'.$grant.'"');
+                throw new \InvalidArgumentException('Unknown grant "' . $grant . '"');
             }
             $grant = new $grant;
         } elseif (! $grant instanceof GrantInterface) {
