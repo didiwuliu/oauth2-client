@@ -134,18 +134,50 @@ class Weixin extends AbstractProvider {
         ]);
     }
 
+    /**
+     * @param $response
+     * {
+    "openid":" OPENID",
+    "nickname": NICKNAME,
+    "sex":"1",
+    "province":"PROVINCE"
+    "city":"CITY",
+    "country":"COUNTRY",
+    "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+    "privilege":[
+    "PRIVILEGE1"
+    "PRIVILEGE2"
+    ]
+    }
+     * @param AccessToken $token
+     * @return User
+     */
     public function userDetails($response, AccessToken $token) {
         $response = (array) $response;
 
         $user = new User;
         $uid = $this->getUserUid($token);
         $name = $response['nickname'];
+        $openid = (isset($response['openid'])) ? $response['openid'] : null;
         $imageUrl = (isset($response['headimgurl'])) ? $response['headimgurl'] : null;
+        $nickname = (isset($response['nickname'])) ? $response['nickname'] : null;
+        $sex = (isset($response['sex'])) ? $response['sex'] : null;
+        $province = (isset($response['province'])) ? $response['province'] : null;
+        $city = (isset($response['city'])) ? $response['city'] : null;
+        $country = (isset($response['country'])) ? $response['country'] : null;
+        $privilege = (isset($response['privilege'])) ? $response['privilege'] : null;
 
         $user->exchangeArray(array(
             'uid' => $uid,
             'name' => $name,
+            'openid' => $openid,
             'imageurl' => $imageUrl,
+            'nickname' => $nickname,
+            'sex' => $sex,
+            'province' => $province,
+            'city' => $city,
+            'country' => $country,
+            'privilege' => $privilege,
         ));
 
         return $user;

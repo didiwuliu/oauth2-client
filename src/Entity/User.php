@@ -5,10 +5,16 @@ namespace League\OAuth2\Client\Entity;
 class User
 {
     protected $uid;
+    protected $openid;
     protected $nickname;
+    protected $sex;
     protected $name;
     protected $firstName;
     protected $lastName;
+    protected $province;
+    protected $city;
+    protected $country;
+    protected $privilege;
     protected $email;
     protected $location;
     protected $description;
@@ -54,10 +60,16 @@ class User
     {
         return array(
             'uid' => $this->uid,
+            'openid' => $this->openid,
             'nickname' => $this->nickname,
+            'sex' => $this->sex,
             'name' => $this->name,
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
+            'province' => $this->province,
+            'city' => $this->city,
+            'country' => $this->country,
+            'privilege' => $this->privilege,
             'email' => $this->email,
             'location' => $this->location,
             'description' => $this->description,
@@ -76,8 +88,14 @@ class User
                 case 'uid':
                     $this->uid = $value;
                     break;
+                case 'openid':
+                    $this->openid = $value;
+                    break;
                 case 'nickname':
                     $this->nickname = $value;
+                    break;
+                case 'sex':
+                    $this->sex = $value;
                     break;
                 case 'name':
                     $this->name = $value;
@@ -87,6 +105,18 @@ class User
                     break;
                 case 'lastname':
                     $this->lastName = $value;
+                    break;
+                case 'province':
+                    $this->province = $value;
+                    break;
+                case 'city':
+                    $this->city = $value;
+                    break;
+                case 'country':
+                    $this->country = $value;
+                    break;
+                case 'privilege':
+                    $this->privilege = $value;
                     break;
                 case 'email':
                     $this->email = $value;
