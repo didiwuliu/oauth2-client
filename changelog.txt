@@ -4,6 +4,7 @@
 
 [oauth2-client_1.0.0.1 2014-08-11 张春生]
 1.新功能:更改getAuthorizationUrl
+2.新功能:更改getAccessToken
 
 --备注分类
 1、新功能：
