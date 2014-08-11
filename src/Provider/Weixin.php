@@ -78,8 +78,8 @@ class Weixin extends AbstractProvider {
                     // @codeCoverageIgnoreStart
                     // No providers included with this library use get but 3rd parties may
                     $client = $this->getHttpClient();
-                    $client->setBaseUrl($this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&'));
-                    $request = $client->send();
+                    $url = $this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&');
+                    $request = $client->get($url)->send();
                     $response = $request->getBody();
                     break;
                 // @codeCoverageIgnoreEnd
