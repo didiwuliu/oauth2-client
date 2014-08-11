@@ -11,6 +11,7 @@
 namespace League\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Token\AccessToken as AccessToken;
+use League\OAuth2\Client\Entity\User as User;
 
 class Weixin extends AbstractProvider {
     public $scopes = array(
