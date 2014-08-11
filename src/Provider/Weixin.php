@@ -65,7 +65,6 @@ class Weixin extends AbstractProvider {
             'appid'     => $this->clientId,
             'secret'     => $this->clientSecret,
             'redirect_uri'     => $this->redirectUri,
-            'grant_type'    => $grant,
         );
 
         $requestParams = $grant->prepRequestParams($defaultParams, $params);
