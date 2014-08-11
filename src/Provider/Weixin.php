@@ -18,7 +18,7 @@ class Weixin extends AbstractProvider {
         'snsapi_userinfo'
     );
 
-    public $responseType = 'string';
+    public $responseType = 'json';
 
     public function urlAuthorize() {
         return 'https://open.weixin.qq.com/connect/oauth2/authorize';
