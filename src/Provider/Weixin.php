@@ -69,6 +69,7 @@ class Weixin extends AbstractProvider {
         );
 
         $requestParams = $grant->prepRequestParams($defaultParams, $params);
+        print_r($requestParams);
 
         try {
             switch (strtoupper($this->method)) {
@@ -76,8 +77,6 @@ class Weixin extends AbstractProvider {
                     // @codeCoverageIgnoreStart
                     // No providers included with this library use get but 3rd parties may
                     $client = $this->getHttpClient();
-                    echo $this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&');
-                    exit();
                     $client->setBaseUrl($this->urlAccessToken() . '?' . $this->httpBuildQuery($requestParams, '', '&'));
                     $request = $client->send();
                     $response = $request->getBody();
