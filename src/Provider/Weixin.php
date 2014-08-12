@@ -166,6 +166,9 @@ class Weixin extends AbstractProvider {
         $city = (isset($response['city'])) ? $response['city'] : null;
         $country = (isset($response['country'])) ? $response['country'] : null;
         $privilege = (isset($response['privilege'])) ? $response['privilege'] : null;
+        $subscribe = (isset($response['subscribe'])) ? $response['subscribe'] : null;
+        $subscribe_time = (isset($response['subscribe_time'])) ? $response['subscribe_time'] : null;
+        $unionid = (isset($response['unionid'])) ? $response['unionid'] : null;
 
         $user->exchangeArray(array(
             'uid' => $uid,
@@ -178,6 +181,9 @@ class Weixin extends AbstractProvider {
             'city' => $city,
             'country' => $country,
             'privilege' => $privilege,
+            'subscribe' => $subscribe,
+            'subscribe_time' => $subscribe_time,
+            'unionid' => $unionid,
         ));
 
         return $user;

@@ -22,6 +22,9 @@ class User
     protected $urls;
     protected $gender;
     protected $locale;
+    protected $subscribe;
+    protected $subscribe_time;
+    protected $unionid;
 
     public function __get($name)
     {
@@ -77,6 +80,9 @@ class User
             'urls' => $this->urls,
             'gender' => $this->gender,
             'locale' => $this->locale,
+            'subscribe' => $this->subscribe,
+            'subscribe_time' => $this->subscribe_time,
+            'unionid' => $this->unionid,
         );
     }
 
@@ -138,6 +144,15 @@ class User
                     break;
                 case 'locale':
                     $this->locale = $value;
+                    break;
+                case 'subscribe':
+                    $this->subscribe = $value;
+                    break;
+                case 'subscribe_time':
+                    $this->subscribe_time = $value;
+                    break;
+                case 'unionid':
+                    $this->unionid = $value;
                     break;
             }
         }

@@ -6,6 +6,9 @@
 1.新功能:更改getAuthorizationUrl
 2.新功能:更改getAccessToken
 
+[oauth2-client_1.0.0.1 2014-08-12 张春生]
+1.新功能:增加用户信息
+
 --备注分类
 1、新功能：
 2、Bug:
