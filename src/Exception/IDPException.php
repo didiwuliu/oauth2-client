@@ -12,15 +12,15 @@ class IDPException extends \Exception
 
         $code = isset($result['code']) ? $result['code'] : 0;
 
-        if (isset($result['error'])) {
+        if (isset($result['errcode'])) {
 
             // OAuth 2.0 Draft 10 style
-            $message = $result['error'];
+            $message = $result['errcode'];
 
-        } elseif (isset($result['message'])) {
+        } elseif (isset($result['errmsg'])) {
 
             // cURL style
-            $message = $result['message'];
+            $message = $result['errmsg'];
 
         } else {
 
@@ -33,9 +33,9 @@ class IDPException extends \Exception
 
     public function getType()
     {
-        if (isset($this->result['error'])) {
+        if (isset($this->result['errcode'])) {
 
-            $message = $this->result['error'];
+            $message = $this->result['errcode'];
 
             if (is_string($message)) {
                 // OAuth 2.0 Draft 10 style

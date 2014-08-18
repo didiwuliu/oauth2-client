@@ -117,7 +117,7 @@ class Weixin extends AbstractProvider {
                 break;
         }
 
-        if (isset($result['error']) && ! empty($result['error'])) {
+        if (isset($result['errcode']) && !empty($result['errcode'])) {
             // @codeCoverageIgnoreStart
             throw new IDPException($result);
             // @codeCoverageIgnoreEnd
