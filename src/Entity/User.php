@@ -14,6 +14,7 @@ class User
     protected $province;
     protected $city;
     protected $country;
+    protected $language;
     protected $privilege;
     protected $email;
     protected $location;
@@ -72,6 +73,7 @@ class User
             'province' => $this->province,
             'city' => $this->city,
             'country' => $this->country,
+            'language' => $this->language,
             'privilege' => $this->privilege,
             'email' => $this->email,
             'location' => $this->location,
@@ -120,6 +122,9 @@ class User
                     break;
                 case 'country':
                     $this->country = $value;
+                    break;
+                case 'language':
+                    $this->language = $value;
                     break;
                 case 'privilege':
                     $this->privilege = $value;

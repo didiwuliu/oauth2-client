@@ -165,6 +165,7 @@ class Weixin extends AbstractProvider {
         $province = (isset($response['province'])) ? $response['province'] : null;
         $city = (isset($response['city'])) ? $response['city'] : null;
         $country = (isset($response['country'])) ? $response['country'] : null;
+        $language = (isset($response['language'])) ? $response['language'] : null;
         $privilege = (isset($response['privilege'])) ? $response['privilege'] : null;
         $subscribe = (isset($response['subscribe'])) ? $response['subscribe'] : null;
         $subscribe_time = (isset($response['subscribe_time'])) ? $response['subscribe_time'] : null;
@@ -180,6 +181,7 @@ class Weixin extends AbstractProvider {
             'province' => $province,
             'city' => $city,
             'country' => $country,
+            'language' => $language,
             'privilege' => $privilege,
             'subscribe' => $subscribe,
             'subscribe_time' => $subscribe_time,
