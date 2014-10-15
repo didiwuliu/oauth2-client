@@ -157,7 +157,7 @@ class Weixin extends AbstractProvider {
 
         $user = new User;
         $uid = $this->getUserUid($token);
-        $name = $response['nickname'];
+        $name = isset($response['nickname']) ? $response['nickname'] : null;
         $openid = (isset($response['openid'])) ? $response['openid'] : null;
         $imageUrl = (isset($response['headimgurl'])) ? $response['headimgurl'] : null;
         $nickname = (isset($response['nickname'])) ? $response['nickname'] : null;
